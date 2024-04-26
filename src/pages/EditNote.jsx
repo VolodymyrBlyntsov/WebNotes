@@ -31,12 +31,18 @@ const EditNote = ({notes, setNotes}) => {
         navigate('/')
     }
 
+    const handleDelete = () => {
+        const newNotes = notes.filter(item => item.id != id)
+        setNotes(newNotes)
+        navigate('/')
+    }
+
     return (
         <section>
             <header className="create-note__header">
                 <Link to="/" className='btn'> <IoIosArrowBack /> </Link>
                 <button className="btn lg primary" onClick={handleForm}>Зберегти</button>
-                <button className='btn danger'> <RiDeleteBin6Line /> </button>
+                <button className='btn danger' onClick={handleDelete}> <RiDeleteBin6Line /> </button>
             </header>
             <form className="create-note__form">
                 <input type="text" placeholder='Назва' value={title} onChange={e => setTitle(e.target.value)} autoFocus />
