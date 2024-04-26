@@ -32,9 +32,11 @@ const EditNote = ({notes, setNotes}) => {
     }
 
     const handleDelete = () => {
-        const newNotes = notes.filter(item => item.id != id)
-        setNotes(newNotes)
-        navigate('/')
+        if (window.confirm('Ви впевнені що хочете видалити нотатку?')) {
+            const newNotes = notes.filter(item => item.id != id)
+            setNotes(newNotes)
+            navigate('/')
+        }
     }
 
     return (
